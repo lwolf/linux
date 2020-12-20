@@ -1,0 +1,26 @@
+/dts-v1/;
+#include "sun5i-a13.dtsi"
+#include "sunxi-common-regulators.dtsi"
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/ {
+    model = "srvant pi";
+    compatible = "srvant,srvant-pi", "allwinner,sun5i-a13";
+
+    aliases {
+        serial0 = &uart1;
+    };
+
+    chosen {
+		stdout-path = "serial0:115200n8";
+	};
+
+};
+
+&uart1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart1_pg_pins>;
+	status = "okay";
+};
