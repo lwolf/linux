@@ -1,5 +1,6 @@
 /dts-v1/;
 #include "sun5i-a13.dtsi"
+#include "openbmc-flash-layout.dtsi"
 #include "sunxi-common-regulators.dtsi"
 
 #include <dt-bindings/gpio/gpio.h>
