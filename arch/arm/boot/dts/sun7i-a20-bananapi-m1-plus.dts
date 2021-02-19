@@ -54,6 +54,7 @@
 
 	aliases {
 		serial0 = &uart0;
+		serial3 = &uart3;
 	};
 
 	chosen {
@@ -77,12 +78,28 @@
 		green {
 			label = "bananapi-m1-plus:green:usr";
 			gpios = <&pio 7 24 GPIO_ACTIVE_HIGH>;
+			linux,default-trigger = "heartbeat";
 		};
 
 		pwr {
 			label = "bananapi-m1-plus:pwr:usr";
 			gpios = <&pio 7 25 GPIO_ACTIVE_HIGH>;
 			default-state = "on";
+		};
+
+		power {
+			label = "srvant:power:usr";
+			gpios = <&pio 1 3 GPIO_ACTIVE_HIGH>; /* PB3 */
+		};
+
+		identity {
+			label = "srvant:identity:usr";
+			gpios = <&pio 1 8 GPIO_ACTIVE_HIGH>; /* PB8 */
+		};
+
+		danger {
+			label = "srvant:danger:usr";
+			gpios = <&pio 1 7 GPIO_ACTIVE_HIGH>; /* PB7 */
 		};
 	};
 
@@ -153,6 +170,15 @@
 		interrupt-parent = <&nmi_intc>;
 		interrupts = <0 IRQ_TYPE_LEVEL_LOW>;
 	};
+};
+
+&i2c2 {
+	status = "okay";
+	rtc@68 {
+		compatible = "maxim,ds3231";
+		reg = <0x68>;
+	};
+
 };
 
 #include "axp209.dtsi"
@@ -245,6 +271,13 @@
 	pinctrl-0 = <&uart0_pb_pins>;
 	status = "okay";
 };
+
+&uart3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&uart3_pg_pins>;
+	status = "okay";
+};
+
 
 &usb_otg {
 	dr_mode = "otg";
