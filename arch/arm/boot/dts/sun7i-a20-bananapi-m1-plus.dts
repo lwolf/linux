@@ -178,7 +178,6 @@
 		compatible = "maxim,ds3231";
 		reg = <0x68>;
 	};
-
 };
 
 #include "axp209.dtsi"
@@ -274,7 +273,7 @@
 
 &uart3 {
 	pinctrl-names = "default";
-	pinctrl-0 = <&uart3_pg_pins>;
+	pinctrl-0 = <&uart3_ph_pins>;
 	status = "okay";
 };
 
