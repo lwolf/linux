@@ -290,3 +290,9 @@
 	/* VBUS on usb host ports are tied to DC5V and therefore always on */
 	status = "okay";
 };
+
+&pio {
+	gpio-line-names =
+	/*PB0-PB22*/	"","","","led-power","","","","led-danger","led-identity","","","","","presence-ps0","","","","","","","","",
+	/*PI0-PI22*/	"","","","","","","","","","","","","","","","","","","","","power-button","reset-button";
+};
