@@ -71,6 +71,19 @@
 			};
 		};
 	};
+	gpio-keys {
+		compatible = "gpio-keys";
+
+		POWER_BUTTON {
+			gpios = <&pio 8 20 GPIO_ACTIVE_LOW>; /* PI20 */
+		};
+		RESET_BUTTON {
+			gpios = <&pio 8 21 GPIO_ACTIVE_LOW>; /* PI21 */
+		};
+		PS_PWROK {
+			gpios = <&pio 1 13 GPIO_ACTIVE_LOW>; /* PPB13 */
+		};
+	};
 
 	leds {
 		compatible = "gpio-leds";
@@ -289,10 +302,4 @@
 	usb0_vbus-supply = <&reg_usb0_vbus>;
 	/* VBUS on usb host ports are tied to DC5V and therefore always on */
 	status = "okay";
-};
-
-&pio {
-	gpio-line-names =
-	/*PB0-PB22*/	"","","","led-power","","","","led-danger","led-identity","","","","","presence-ps0","","","","","","","","",
-	/*PI0-PI22*/	"","","","","","","","","","","","","","","","","","","","","power-button","reset-button";
 };
