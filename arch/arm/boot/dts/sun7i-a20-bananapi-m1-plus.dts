@@ -75,12 +75,15 @@
 		compatible = "gpio-keys";
 
 		POWER_BUTTON {
+			label = "Power button";
 			gpios = <&pio 8 20 GPIO_ACTIVE_LOW>; /* PI20 */
 		};
 		RESET_BUTTON {
+			label = "Reset button";
 			gpios = <&pio 8 21 GPIO_ACTIVE_LOW>; /* PI21 */
 		};
 		PS_PWROK {
+			label = "PS power ok";
 			gpios = <&pio 1 13 GPIO_ACTIVE_LOW>; /* PPB13 */
 		};
 	};
@@ -302,4 +305,62 @@
 	usb0_vbus-supply = <&reg_usb0_vbus>;
 	/* VBUS on usb host ports are tied to DC5V and therefore always on */
 	status = "okay";
+};
+
+&pio {
+	vcc-pa-supply = <&reg_vcc3v3>;
+	vcc-pc-supply = <&reg_vcc3v3>;
+	vcc-pe-supply = <&reg_vcc3v3>;
+	vcc-pf-supply = <&reg_vcc3v3>;
+	vcc-pg-supply = <&reg_vcc3v3>;
+	gpio-line-names =
+		/* PA */
+		"ERXD3", "ERXD2", "ERXD1", "ERXD0", "ETXD3",
+			"ETXD2", "ETXD1", "ETXD0",
+		"ERXCK", "ERXERR", "ERXDV", "EMDC", "EMDIO",
+			"ETXEN", "ETXCK", "ECRS",
+		"ECOL", "ETXERR", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		/* PB */
+		"PMU-SCK", "PMU-SDA", "", "POWER_LED", "", "", "", "DANGER_LED",
+		"IDENTITY_LED", "USB0-DRV", "", "", "", "PS_PWROK", "", "",
+		"", "", "", "", "SCL", "SDA", "", "",
+		"", "", "", "", "", "", "", "",
+		/* PC */
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		/* PD */
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		/* PE */
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		/* PF */
+		"SD0-D1", "SD0-D0", "SD0-CLK", "SD0-CMD", "SD0-D3",
+			"SD0-D2", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		/* PG */
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		"", "", "", "", "", "", "", "",
+		/* PH */
+		"TXD0", "RXD0", "IO-1", "PH3", "USB0-IDDET", "PH5", "", "",
+		"", "", "SD0-DET", "", "", "", "", "",
+		"", "", "", "", "IO-4", "IO-5", "", "EMAC-PWR-EN",
+		"LED1", "", "", "", "", "", "", "",
+		/* PI */
+		"", "", "", "IO-GCLK", "", "", "", "",
+		"", "", "SPI-CE0", "SPI-CLK", "SPI-MOSI",
+			"SPI-MISO", "SPI-CE1", "",
+		"IO-6", "IO-3", "IO-2", "IO-0", "POWER_BUTTON", "RESET_BUTTON", "", "",
+		"", "", "", "", "", "", "", "";
 };
