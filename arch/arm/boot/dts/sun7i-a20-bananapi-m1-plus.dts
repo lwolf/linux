@@ -76,15 +76,24 @@
 
 		POWER_BUTTON {
 			label = "Power button";
-			gpios = <&pio 8 20 GPIO_ACTIVE_LOW>; /* PI20 */
+			gpios = <&pio 7 20 GPIO_ACTIVE_LOW>; /* PH20 */
+			interrupt-parent = <&pio>;
+			interrupts = <7 20 IRQ_TYPE_LEVEL_HIGH>;
+			linux,code = <1>;
 		};
 		RESET_BUTTON {
 			label = "Reset button";
-			gpios = <&pio 8 21 GPIO_ACTIVE_LOW>; /* PI21 */
+			gpios = <&pio 7 21 GPIO_ACTIVE_LOW>; /* PH21 */
+			interrupt-parent = <&pio>;
+			interrupts = <7 21 IRQ_TYPE_LEVEL_HIGH>;
+			linux,code = <2>;
 		};
 		PS_PWROK {
 			label = "PS power ok";
-			gpios = <&pio 1 13 GPIO_ACTIVE_LOW>; /* PPB13 */
+			gpios = <&pio 8 17 GPIO_ACTIVE_LOW>; /* PI17 */
+			interrupt-parent = <&pio>;
+			interrupts = <8 17 IRQ_TYPE_LEVEL_HIGH>;
+			linux,code = <3>;
 		};
 	};
 
@@ -322,8 +331,8 @@
 		"ECOL", "ETXERR", "", "", "", "", "", "",
 		"", "", "", "", "", "", "", "",
 		/* PB */
-		"PMU-SCK", "PMU-SDA", "", "POWER_LED", "", "", "", "DANGER_LED",
-		"IDENTITY_LED", "USB0-DRV", "", "", "", "PS_PWROK", "", "",
+		"PMU-SCK", "PMU-SDA", "", "POWER_LED", "", "RESET_OUT", "POWER_OUT", "DANGER_LED",
+		"IDENTITY_LED", "USB0-DRV", "", "", "", "", "", "",
 		"", "", "", "", "SCL", "SDA", "", "",
 		"", "", "", "", "", "", "", "",
 		/* PC */
@@ -355,12 +364,12 @@
 		/* PH */
 		"TXD0", "RXD0", "IO-1", "PH3", "USB0-IDDET", "PH5", "", "",
 		"", "", "SD0-DET", "", "", "", "", "",
-		"", "", "", "", "IO-4", "IO-5", "", "EMAC-PWR-EN",
+		"", "", "", "", "POWER_BUTTON", "RESET_BUTTON", "", "EMAC-PWR-EN",
 		"LED1", "", "", "", "", "", "", "",
 		/* PI */
 		"", "", "", "IO-GCLK", "", "", "", "",
 		"", "", "SPI-CE0", "SPI-CLK", "SPI-MOSI",
 			"SPI-MISO", "SPI-CE1", "",
-		"IO-6", "IO-3", "IO-2", "IO-0", "POWER_BUTTON", "RESET_BUTTON", "", "",
+		"", "PS_PWROK", "", "", "", "", "", "",
 		"", "", "", "", "", "", "", "";
 };
