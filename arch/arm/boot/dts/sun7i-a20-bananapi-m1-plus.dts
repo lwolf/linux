@@ -74,21 +74,21 @@
 	gpio-keys {
 		compatible = "gpio-keys";
 
-		POWER_BUTTON {
+		MON_P0_PWR_BTN {
 			label = "Power button";
 			gpios = <&pio 7 20 GPIO_ACTIVE_LOW>; /* PH20 */
 			interrupt-parent = <&pio>;
 			interrupts = <7 20 IRQ_TYPE_LEVEL_HIGH>;
 			linux,code = <1>;
 		};
-		RESET_BUTTON {
+		MON_P0_RST_BTN {
 			label = "Reset button";
 			gpios = <&pio 7 21 GPIO_ACTIVE_LOW>; /* PH21 */
 			interrupt-parent = <&pio>;
 			interrupts = <7 21 IRQ_TYPE_LEVEL_HIGH>;
 			linux,code = <2>;
 		};
-		PS_PWROK {
+		MON_P0_PWR_GOOD {
 			label = "PS power ok";
 			gpios = <&pio 8 17 GPIO_ACTIVE_LOW>; /* PI17 */
 			interrupt-parent = <&pio>;
@@ -119,7 +119,7 @@
 			gpios = <&pio 1 8 GPIO_ACTIVE_HIGH>; /* PB8 */
 		};
 
-		danger {
+		fault {
 			gpios = <&pio 1 7 GPIO_ACTIVE_HIGH>; /* PB7 */
 		};
 	};
@@ -331,8 +331,8 @@
 		"ECOL", "ETXERR", "", "", "", "", "", "",
 		"", "", "", "", "", "", "", "",
 		/* PB */
-		"PMU-SCK", "PMU-SDA", "", "POWER_LED", "", "RESET_OUT", "POWER_OUT", "DANGER_LED",
-		"IDENTITY_LED", "USB0-DRV", "", "", "", "", "", "",
+		"PMU-SCK", "PMU-SDA", "", "POWER_LED", "", "ASSERT_RST_BTN", "ASSERT_PWR_BTN", "FAULT_LED",
+		"IDENTITY_LED", "USB0-DRV", "", "", "", "ASSERT_BMC_READY", "", "",
 		"", "", "", "", "SCL", "SDA", "", "",
 		"", "", "", "", "", "", "", "",
 		/* PC */
@@ -364,12 +364,12 @@
 		/* PH */
 		"TXD0", "RXD0", "IO-1", "PH3", "USB0-IDDET", "PH5", "", "",
 		"", "", "SD0-DET", "", "", "", "", "",
-		"", "", "", "", "POWER_BUTTON", "RESET_BUTTON", "", "EMAC-PWR-EN",
+		"", "", "", "", "MON_P0_PWR_BTN", "MON_P0_RST_BTN", "", "EMAC-PWR-EN",
 		"LED1", "", "", "", "", "", "", "",
 		/* PI */
 		"", "", "", "IO-GCLK", "", "", "", "",
-		"", "", "POST_COMPLETE", "SIO_ONCONTROL", "SIO_S5",
-			"ID_BUTTON", "NMI_BUTTON", "",
-		"SIO_POWER_GOOD", "PS_PWROK", "", "", "POST_COMPLETE", "", "", "",
+		"", "", "POST_COMPLETE", "", "",
+			"CHASSIS_ID_BTN", "MON_P0_NMI_BTN", "",
+		"", "MON_P0_PWR_GOOD", "", "", "MON_PWROK", "", "", "",
 		"", "", "", "", "", "", "", "";
 };
