@@ -368,8 +368,8 @@
 		"LED1", "", "", "", "", "", "", "",
 		/* PI */
 		"", "", "", "IO-GCLK", "", "", "", "",
-		"", "", "SPI-CE0", "SPI-CLK", "SPI-MOSI",
-			"SPI-MISO", "SPI-CE1", "",
-		"", "PS_PWROK", "", "", "", "", "", "",
+		"", "", "POST_COMPLETE", "SIO_ONCONTROL", "SIO_S5",
+			"ID_BUTTON", "NMI_BUTTON", "",
+		"SIO_POWER_GOOD", "PS_PWROK", "", "", "POST_COMPLETE", "", "", "",
 		"", "", "", "", "", "", "", "";
 };
